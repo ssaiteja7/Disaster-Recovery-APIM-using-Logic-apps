@@ -8,12 +8,12 @@ Enterprise don’t necessarily require a premium tier just for DR. A cost-effect
 
 **Usage Guidelines**
 **Prerequisites:**
-Azure API Management
-Logic Apps
-Storage Account
-Traffic Manager
-Azure AD
-Azure DevOps (Optional)
+* Azure API Management
+* Logic Apps
+* Storage Account
+* Traffic Manager
+* Azure AD,
+* Azure DevOps (Optional)
 
 Readily available ARM Templates/Configurations to provision the services
 
@@ -25,10 +25,13 @@ Two Logic apps – for automation of backup from primary region and restore in s
 Storage account – for storing backup information of API Management primary
 Azure AD application – to allow logic app provide authentication mechanism to make changes in API Management (through Service Principal concept).
 
+**Architecture ** 
+
 ![image](https://user-images.githubusercontent.com/90609419/161036211-4494972d-8880-4b17-bf81-70c4023f821e.png)
 
 
 **Implementation **
+
 Logic app uses timer orchestration step to automatically trigger itself. logic app sends service principal details to Azure AD and then retrieves the authentication token.
 
 Invoke API Management rest API with operation as backup
@@ -42,8 +45,8 @@ Post restore operation both API Management instances are now exactly identical. 
 The request from end user/ application is received to traffic manager. Traffic manager is configured in failover mode with primary API Management as active and secondary API Management as passive.
 
 **Technologies used :**
-Microsoft Azure
-Azure ARM Templates
-Azure Devops (Optional)
+* Microsoft Azure
+* Azure ARM Templates
+* Azure Devops (Optional)
 
 
